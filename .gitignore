@@ -1,0 +1,9 @@
+*.log
+Library/assetDatabase3
+Library/BuildPlayer.prefs
+Library/EditorInstance.json
+Library/FacebookSDK/*
+Library/metadata/*
+Library/ShaderCache/*
+Library/ScriptAssemblies/*
+Temp/*
