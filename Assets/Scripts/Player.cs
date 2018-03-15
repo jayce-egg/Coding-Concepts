@@ -154,7 +154,7 @@ public class Player : MovingObject {
 
 	public void LoseFood(int loss)
 	{
-		animator.SetTrigger ("playerHit");
+		animator.SetTrigger ("PlayerHit");
 		food -= loss;
 		foodText.text = "-" + loss + " Food: " + food;
 		CheckIfGameOver ();
