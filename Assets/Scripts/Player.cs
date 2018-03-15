@@ -21,7 +21,9 @@ public class Player : MovingObject {
 
 	private Animator animator;
 	private int food = 100;
+#if !UNITY_STANDALONE && UNITY_WEBPLAYER
 	private Vector2 touchOrigin = -Vector2.one;
+#endif
 
 	// Use this for initialization
 	protected override void Start () 
@@ -98,8 +100,7 @@ public class Player : MovingObject {
 		if(Move(xDir, yDir, out hit))
 		{
 			SoundManager.instance.RandomizeSfx (moveSound1, moveSound2);
-		}
-				
+		}				
 
 		CheckIfGameOver ();
 
@@ -133,7 +134,7 @@ public class Player : MovingObject {
 	{
 		Wall hitWall = component as Wall;
 		hitWall.DamageWall (wallDamage);
-		animator.SetTrigger ("playerChop");
+		animator.SetTrigger ("PlayerChop");
 	}
 
 	private void Restart()

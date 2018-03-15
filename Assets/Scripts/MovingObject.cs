@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MovingObject : MonoBehaviour {
-
+public abstract class MovingObject : MonoBehaviour 
+{
 	public float moveTime = 0.1f;
 	public LayerMask blockingLayer;
 
@@ -12,7 +12,8 @@ public abstract class MovingObject : MonoBehaviour {
 	private float inverseMoveTime;
 
 	// Use this for initialization
-	protected virtual void Start () {
+	protected virtual void Start ()
+	{
 		boxCollider = GetComponent<BoxCollider2D> ();
 		rb2D = GetComponent<Rigidbody2D> ();
 		inverseMoveTime = 1f / moveTime;
@@ -27,7 +28,8 @@ public abstract class MovingObject : MonoBehaviour {
 		hit = Physics2D.Linecast (start, end, blockingLayer);
 		boxCollider.enabled = true;
 
-		if (hit.transform == null) {
+		if (hit.transform == null)
+		{
 			StartCoroutine (SmoothMovement (end));
 			return true;
 		}
@@ -40,12 +42,14 @@ public abstract class MovingObject : MonoBehaviour {
 	{
 		RaycastHit2D hit;
 		bool canMove = Move (xDir, yDir, out hit);
-		if (hit.transform == null)
+		if (hit.transform == null) 
+		{
 			return;
+		}
 
 		T hitComponent = hit.transform.GetComponent<T> ();
 		if (!canMove && hitComponent != null)
-			OnCantMove (hitComponent);
+			OnCantMove(hitComponent);
 	}
 
 	protected IEnumerator SmoothMovement(Vector3 end)
